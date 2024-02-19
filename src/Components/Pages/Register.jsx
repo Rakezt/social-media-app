@@ -54,7 +54,6 @@ const Register = () => {
       setLoading(false);
       alert("Check input fields");
     }
-    console.log(formik, "formik");
   };
 
   const formik = useFormik({ initialValues, validationSchema, handleRegister });

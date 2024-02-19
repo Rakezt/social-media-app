@@ -1,9 +1,11 @@
 export const postActions = {
   SUBMIT_POST: "SUBMIT_POST",
   HANDLE_ERROR: "HANDLE_ERROR",
+  ADD_LIKE: "ADD_LIKE",
+  ADD_COMMENT: "ADD_COMMENT",
 };
 
-export const postStates = { error: false, posts: [] };
+export const postStates = { error: false, posts: [], comments: [] };
 
 export const postReducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +20,19 @@ export const postReducer = (state, action) => {
         ...state,
         error: true,
         posts: [],
+        likes: [],
+      };
+    case postActions.ADD_LIKE:
+      return {
+        ...state,
+        error: false,
+        likes: action.likes,
+      };
+    case postActions.ADD_COMMENT:
+      return {
+        ...state,
+        error: false,
+        comments: action.comments,
       };
     default:
       return state;

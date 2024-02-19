@@ -1,6 +1,7 @@
 import { Avatar, Tooltip } from "@material-tailwind/react";
 import React from "react";
 import { useAppContext } from "../Context/AppContext";
+import avatar from "../Assets/images/avatar.png";
 
 const UserLinks = () => {
   const { signOutUser, user, userData } = useAppContext();
@@ -57,11 +58,7 @@ const UserLinks = () => {
       </div>
       <div className="flex mx-4 items-center" onClick={signOutUser}>
         <Tooltip content="Sign Out" placement="bottom">
-          <Avatar
-            src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png"
-            size="sm"
-            alt="abc"
-          ></Avatar>
+          <Avatar src={user?.photoURL || avatar} size="sm" alt="abc"></Avatar>
         </Tooltip>
         <p className="ml-4 font-roboto text-sm text-black font-medium no-underline">
           {user?.displayName === null && userData?.name !== undefined

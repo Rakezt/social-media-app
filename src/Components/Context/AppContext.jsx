@@ -33,7 +33,6 @@ const AppProvider = ({ children }) => {
       const user = data.user;
       const q = query(collectionUserRef, where("uid", "==", user.uid));
       const docs = await getDocs(q);
-      console.log("docs", docs);
       if (docs.docs.length === 0) {
         await addDoc(collectionUserRef, {
           uid: user?.uid,
@@ -45,7 +44,7 @@ const AppProvider = ({ children }) => {
       }
     } catch (error) {
       alert(error.messages);
-      console.log(error.messages);
+      console.error(error.messages);
     }
   };
 
@@ -54,7 +53,7 @@ const AppProvider = ({ children }) => {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       alert(error.messages);
-      console.log(error.messages);
+      console.error(error.messages);
     }
   };
 
@@ -79,7 +78,7 @@ const AppProvider = ({ children }) => {
       alert("New Password send to your email");
     } catch (error) {
       alert(error.messages);
-      console.log(error.messages);
+      console.error(error.messages);
     }
   };
   const signOutUser = async () => {
@@ -92,7 +91,6 @@ const AppProvider = ({ children }) => {
         const q = query(collectionUserRef, where("uid", "==", user?.uid));
         await onSnapshot(q, (doc) => {
           setUserData(doc?.docs[0]?.data());
-          console.log("DOC", doc);
         });
         setUser(user);
       } else {
@@ -110,8 +108,6 @@ const AppProvider = ({ children }) => {
     }
     return () => userStateChanged();
   }, []);
-  console.log("user", user);
-  console.log("userData", userData);
 
   const initialState = {
     signInWithGoogle: signInWithGoogle,

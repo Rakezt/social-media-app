@@ -1,8 +1,9 @@
-import { Avatar, Button } from "@material-tailwind/react";
+import { Alert, Avatar, Button } from "@material-tailwind/react";
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import live from "../Assets/images/live.png";
 import smile from "../Assets/images/smile.png";
 import addImage from "../Assets/images/add-image.png";
+import avatar from "../Assets/images/avatar.png";
 import { useAppContext } from "../Context/AppContext";
 import {
   collection,
@@ -21,6 +22,7 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import PostCard from "./PostCard";
 
 const Main = () => {
   const { user, userData } = useAppContext();
@@ -40,6 +42,7 @@ const Main = () => {
   };
 
   const handleSubmitPost = async (e) => {
+    e.preventDefault();
     if (text.current.value !== "") {
       try {
         await setDoc(postRef, {
@@ -50,13 +53,13 @@ const Main = () => {
           email: user?.email || userData?.email,
           text: text.current.value,
           image: image,
-          timestamp: serverTimestamp,
+          timestamp: serverTimestamp(),
         });
         text.current.value = "";
       } catch (error) {
         dispatch({ type: HANDLE_ERROR });
         alert(error.messages);
-        console.log(error.messages);
+        console.error(error.messages);
       }
     } else {
       dispatch({ type: HANDLE_ERROR });
@@ -76,9 +79,9 @@ const Main = () => {
 
   const submitImage = async () => {
     const fileType = metadata.contentType.includes(file["type"]);
-    console.log("File", file);
+
     if (!file) return;
-    if (file) {
+    if (fileType) {
       try {
         const storageRef = ref(storage, `image/${file.name}`);
         const uploadTask = uploadBytesResumable(
@@ -132,12 +135,12 @@ const Main = () => {
       <div className="flex flex-col py-4 w-full bg-white rounded-3xl shadow-lg">
         <div className="flex items-center border-b-2 border-gray-300 pb-4 pl-4 w-full">
           <Avatar
-            src="https://cdn.pixabay.com/photo/2020/11/27/06/58/cat-5781057_1280.jpg"
+            src={user?.photoURL || avatar}
             size="sm"
             variant="circular"
-            alt="abc"
+            alt="profilephoto"
           ></Avatar>
-          <form className="w-full" onClick={handleSubmitPost}>
+          <form className="w-full" onSubmit={handleSubmitPost}>
             <div className="flex justify-between items-center">
               <div className="w-full ml-4">
                 <input
@@ -207,7 +210,36 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col py-4 w-full">Post</div>
+      <div className="flex flex-col py-4 w-full">
+        {state?.error ? (
+          <div className="flex justify-center items-center">
+            <Alert color="red">Something went wrong please refresh page</Alert>
+          </div>
+        ) : (
+          <div>
+            {state.posts.length > 0 &&
+              state?.posts?.map((post, index) => {
+                const postTimeStamp = new Date(post?.timestamp?.toDate());
+                const ISTtimeStamp = postTimeStamp?.toLocaleString("en-US", {
+                  timeZone: "Asia/Kolkata",
+                });
+                return (
+                  <PostCard
+                    key={index}
+                    uid={post.uid}
+                    id={post.documentId}
+                    logo={post.logo}
+                    name={post.name}
+                    email={post.email}
+                    text={post.text}
+                    image={post.image}
+                    timestamp={ISTtimeStamp}
+                  ></PostCard>
+                );
+              })}
+          </div>
+        )}
+      </div>
       <div ref={scrollRef}></div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Avatar, Tooltip } from "@material-tailwind/react";
 import React, { useEffect, useRef, useState } from "react";
 import location from "../Assets/images/location.png";
+import avatar from "../Assets/images/avatar.png";
 import job from "../Assets/images/job.png";
 import facebook from "../Assets/images/facebook.png";
 import twitter from "../Assets/images/twitter.png";
@@ -65,11 +66,7 @@ const LeftSide = () => {
         />
         <div className="absolute -bottom-4">
           <Tooltip content="Profile" placement="top">
-            <Avatar
-              src="https://cdn.pixabay.com/photo/2020/11/27/06/58/cat-5781057_1280.jpg"
-              size="md"
-              alt="abc"
-            ></Avatar>
+            <Avatar src={user?.photoURL || avatar} size="md" alt="abc"></Avatar>
           </Tooltip>
         </div>
       </div>
