@@ -9,7 +9,7 @@ const Navbar = () => {
       <Link to="/">
         <div className="text-3xl font-extrabold text-gray-900 dark:text-white font-roboto">
           <span className="text-transparent bg-clip-text bg-blue-400">
-            My Connection
+            Kamanahalli Book
           </span>
         </div>
       </Link>

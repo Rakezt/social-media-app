@@ -60,7 +60,7 @@ const LeftSide = () => {
     <div className="flex flex-col h-screen bg-white pb-4 border-2 rounded-r-xl shadow-lg">
       <div className="flex flex-col items-center relative">
         <img
-          className="h-38 w-full rounded-r-xl"
+          className="h-35 w-full rounded-r-xl"
           src="https://cdn.pixabay.com/photo/2017/07/27/00/46/fantasy-2543658_1280.jpg"
           alt="alt"
         />
@@ -109,23 +109,7 @@ const LeftSide = () => {
           </p>
         </div>
       </div>
-      <div className="ml-2">
-        <p className="font-roboto font-bold text-lg no-underline tracking-normal leading-none">
-          Social Profiles
-        </p>
-        <div className="flex items-center">
-          <img className="h-10 mb-3 mr-2" src={facebook} alt="facebook" />
-          <p className="font-roboto font-bold text-lg text-blue-300 no-underline tracking-normal leading-none py-2">
-            Facebook
-          </p>
-        </div>
-        <div className="flex items-center">
-          <img className="h-10 mb-3 mr-2" src={twitter} alt="twitter" />
-          <p className="font-roboto font-bold text-lg text-blue-300 no-underline tracking-normal leading-none py-2">
-            X
-          </p>
-        </div>
-      </div>
+
       <div className="flex flex-col justify-center items-center pt-4">
         <p className="font-roboto font-bold text-lg no-underline tracking-normal leading-none">
           {" "}
