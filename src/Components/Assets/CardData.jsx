@@ -7,7 +7,7 @@ import card5 from "../Assets/images/Card5.jpg";
 export const cardData = [
   {
     id: "1",
-    name: "John Doe",
+    name: "Beckham",
     image: card1,
     status: "Online",
   },
@@ -31,7 +31,7 @@ export const cardData = [
   },
   {
     id: "5",
-    name: "Michael Bony",
+    name: "Michael",
     image: card5,
     status: "Offline",
   },

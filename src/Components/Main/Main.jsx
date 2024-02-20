@@ -93,7 +93,7 @@ const Main = () => {
           "state_changed",
           (snapshot) => {
             const progress =
-              Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             setProgressBar(progress);
           },
           (error) => {

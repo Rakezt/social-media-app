@@ -3,6 +3,7 @@ import { useAppContext } from "../Context/AppContext";
 import { Link } from "react-router-dom";
 import { Avatar } from "@material-tailwind/react";
 import avatar from "../Assets/images/avatar.png";
+import ads from "../Assets/images/ads.png";
 
 import {
   arrayRemove,
@@ -39,11 +40,7 @@ const RightSide = () => {
   return (
     <div className="flex flex-col h-screen bg-white shadow-lg border-2 rounded-l-xl">
       <div className="flex flex-col items-center relative pt-10">
-        <img
-          className="h-48 rounded-md"
-          src="https://media.istockphoto.com/id/1467878602/photo/humanoid-robots-revolutionizing-mundane-tasks.jpg?s=1024x1024&w=is&k=20&c=1HLIn9PArwxV4Jba-rKclHCE3BO9D-4xct-T8kzLgmg="
-          alt="nature"
-        />
+        <img className="h-48 rounded-md" src={ads} alt="nature" />
       </div>
       <p className="font-roboto font-normal text-sm text-gray-700 max-w-fit no-inderline tracking-normal leading-tight py-2 mx-2">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis

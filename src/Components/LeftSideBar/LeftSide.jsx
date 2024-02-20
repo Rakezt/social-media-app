@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import location from "../Assets/images/location.png";
 import avatar from "../Assets/images/avatar.png";
 import job from "../Assets/images/job.png";
-import facebook from "../Assets/images/facebook.png";
-import twitter from "../Assets/images/twitter.png";
+import wall from "../Assets/images/wall.jpg";
 import laptop from "../Assets/images/laptop.jpg";
 import media from "../Assets/images/media.jpg";
 import apps from "../Assets/images/apps.jpg";
@@ -59,11 +58,7 @@ const LeftSide = () => {
   return (
     <div className="flex flex-col h-screen bg-white pb-4 border-2 rounded-r-xl shadow-lg">
       <div className="flex flex-col items-center relative">
-        <img
-          className="h-35 w-full rounded-r-xl"
-          src="https://cdn.pixabay.com/photo/2017/07/27/00/46/fantasy-2543658_1280.jpg"
-          alt="alt"
-        />
+        <img className="h-35 w-full rounded-r-xl" src={wall} alt="alt" />
         <div className="absolute -bottom-4">
           <Tooltip content="Profile" placement="top">
             <Avatar src={user?.photoURL || avatar} size="md" alt="abc"></Avatar>
