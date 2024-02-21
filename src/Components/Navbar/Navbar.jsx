@@ -2,6 +2,7 @@ import React from "react";
 import NavLinks from "./NavLinks";
 import UserLinks from "./UserLinks";
 import { Link } from "react-router-dom";
+import icon from "../Assets/images/icon.png";
 
 const Navbar = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar = () => {
       <Link to="/">
         <div className="text-3xl font-extrabold text-gray-900 dark:text-white font-roboto">
           <span className="text-transparent bg-clip-text bg-blue-400">
-            Social Vibe
+            <img src={icon} alt="logo" /> Social Vibe
           </span>
         </div>
       </Link>
