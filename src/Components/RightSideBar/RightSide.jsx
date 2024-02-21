@@ -53,10 +53,10 @@ const RightSide = () => {
       </p>
       <div className="mx-2 mt-10">
         <p className="font-roboto font-medium text-sm text-gray-700 no-underline tracking-normal leading-none">
-          Friends :{" "}
+          Friends List
         </p>
         <input
-          className="border-0 outline-none mt-4"
+          className="w-full rounded-2xl outline-none border border-gray-800 m-2 p-2 bg-gray-100"
           name="input"
           value={input}
           type="text"
